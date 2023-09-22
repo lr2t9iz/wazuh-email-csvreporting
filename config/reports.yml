@@ -1,0 +1,16 @@
+# Report 1
+report_win_sysmon:
+        # wazuh dashboard - filter (query)
+        index_pattern: "wazuh-alerts-*"
+        query: "data.win.system.channel:\"Microsoft-Windows-Sysmon/Operational\" AND data.win.system.eventID:\"100\""
+        since_date: "now-24h/h"
+        # csv format (wazuh table)
+        fields: ["@timestamp", "agent.name", "data.win.eventdata.parentCommandLine", "data.win.eventdata.hashes"]
+        rename_fields_to: ["timestamp", "agente_name", "command_line", "hash"]
+        # mail info
+        sender_email: "report@wazuh.local"
+        receiver_email: ["admin@abc.org", "support@abc.org"]
+          
+# Report 2
+#report_fim:
+        #...
