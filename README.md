@@ -1,6 +1,7 @@
 # WAZUH - Email CSV Reporting [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/license/mit/)
 
 ## Overview
+- Mini App Tool for fetching wazuh security events, generating CSV files, and attaching them via email.
 
 ## **Prerequisites**
 
