@@ -38,7 +38,7 @@ Step 1: **Reporting Config**
 Configure the ./config/reports.yml file for earch report. 
 
 Step 2: **Schedule Task**
-configure a cron job to trigger the report. Example:
-![1](https://github.com/lr2t9iz/wazuh-email-csvreporting/assets/46981088/7aca45c0-3f88-418e-af56-b76bd20cf208)
+configure a cron job to trigger the report with <config>_report.yml parameter - bydefault reports.yml:  Example:
+![1](https://github.com/lr2t9iz/wazuh-email-csvreporting/assets/46981088/ca9ecaaf-71e9-4734-a01d-dd5507d17c21)
 
 See [Cron Generator](https://crontab.guru/)
