@@ -30,8 +30,8 @@ def send_mail(creds, cfg_report, report, csv_content):
         server.login(creds['MAIL_USER'], creds['MAIL_PASS'])
         msg = MIMEMultipart()
         msg['From'] = cfg_report['sender_email']
-        msg['Subject'] = "Report: "+report+".csv"
-        msg.attach(MIMEText("Hi\n\nReport "+report+" Attached\n\n--\nWazuh ReportGenAutomation", "plain"))
+        msg['Subject'] = cfg_report['mail'][0]
+        msg.attach(MIMEText(cfg_report['mail'][1], "plain"))
         part = MIMEApplication(csv_content.encode('utf-8'), Name=report+".csv")
         part['Content-Disposition'] = "attachment; filename=\""+report+".csv\""
         msg.attach(part)

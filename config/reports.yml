@@ -3,7 +3,7 @@ report_win_sysmon:
         # wazuh dashboard - filter (query)
         index_pattern: "wazuh-alerts-*"
         query: "data.win.system.channel:\"Microsoft-Windows-Sysmon/Operational\" AND data.win.system.eventID:\"100\""
-	# since_date eq cron range trigger
+        # since_date eq cron range trigger
         since_date: "now-24h/h"
         # csv format (wazuh table), @timestamp required
         fields: ["@timestamp", "agent.name", "data.win.eventdata.parentCommandLine", "data.win.eventdata.hashes"]
@@ -13,6 +13,8 @@ report_win_sysmon:
         # Aggregate(False|True) ??? @timestam frequence(minutes) - required -> recommendation => 15m
         agg: [False, "30"]
         # mail info
+        ## ["SUBJECT": "BODY"]
+        mail: ["Weekly Report", "Hi Team, \nWazuh ReportGenAutomation"]
         sender_email: "report@wazuh.local"
         receiver_email: ["admin@abc.org", "support@abc.org"]
           
