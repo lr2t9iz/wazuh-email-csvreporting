@@ -2,3 +2,4 @@
 venv
 *.log
 */test.yml
+t3mp*

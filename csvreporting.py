@@ -1,5 +1,5 @@
 # Written by lr2t9iz (2023.09.21)
-# Script to generate and csv report and attaches it in an email
+# Script to fetch data, generate csv report and attaches it in an email
 
 # Stepts
 #  1. Fetch Wazuh Security Events (data)
@@ -14,7 +14,6 @@ import sys
 import yaml
 ## for data report
 import requests
-from requests.auth import HTTPBasicAuth
 import pandas as pd
 import urllib3
 ## send mail
@@ -82,7 +81,7 @@ def get_data(creds, cfg_report):
              auth=HTTPBasicAuth(creds['WI_USER'], creds['WI_PASS']), verify=False,
              json={"index":{"max_result_window":db_docs_limit}})
     data = requests.post(f"https://{creds['WI_HOST']}:{creds['WI_PORT']}/{cfg_report['index_pattern']}/_search",
-            auth=HTTPBasicAuth(creds['WI_USER'], creds['WI_PASS']), verify=False,
+            auth=requests.auth.HTTPBasicAuth(creds['WI_USER'], creds['WI_PASS']), verify=False,
             json=query_dsl)
     print(f"Wazuh Indexer Result Code: {data.status_code}")
     #print(data.json()) #debug
