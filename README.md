@@ -23,10 +23,10 @@ Create the .env file for smtp and wazuh indexer credentials. Reference: .env-exa
 ## **Usage**
 
 Step 1: **Reporting Config**
-Configure the ./config/reports.yml file for earch report. 
+Configure the ./conf.d/**config_reports.yml** file. 
 
 Step 2: **Schedule Task**
-configure a cron job to trigger the report with <config>_report.yml parameter - bydefault reports.yml:  Example:
-![1](https://github.com/lr2t9iz/wazuh-email-csvreporting/assets/46981088/ca9ecaaf-71e9-4734-a01d-dd5507d17c21)
+configure a cron job to trigger the report.
+- Example: `0 * * * * python3 .\csvreporting.py --config config_reports.yml`
 
 See [Cron Generator](https://crontab.guru/)
