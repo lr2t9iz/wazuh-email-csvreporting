@@ -23,11 +23,13 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 
 import argparse
-
+import datetime
 import logging
+
 log = logging.getLogger(__name__)
+month = datetime.datetime.now().strftime('%Y.%m')
 log_filename = os.path.basename(__file__)[:-3]
-log_filename = os.path.join('logs', log_filename)
+log_filename = os.path.join('logs', f"{month}_{log_filename}")
 log_format = '%(asctime)s %(levelname)s %(message)s'
 logging.basicConfig(filename=f"{log_filename}.log", level=logging.INFO, format=log_format)
 
@@ -185,12 +187,13 @@ def main():
   MAIL_USER = creds['MAIL_USER']
   MAIL_PASS = creds['MAIL_PASS']
   
-  docs_limit = 20000 # wi support 10000, 
+  docs_limit = 10000 # wi support 10000, 
   # if you want increase the limit, set default_limit to False, NOT work with cloud instances
   change_limit = False
   
   log.info(f"main: starting")
   for report, cfg_report in cfg_reports.items():
+    debug(f"main: {report} processing ++++++++++++++++++++++++")
     log.info(f"main: {report} processing ++++++++++++++++++++++++")
     data_json = get_data(WI_URL, WI_USER, WI_PASS, cfg_report, docs_limit, change_limit)
     if len(data_json):
