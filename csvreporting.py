@@ -200,7 +200,11 @@ def main():
       data_csv = gen_report(data_json, report, cfg_report)
       send_mail(MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS, report, cfg_report, data_csv)
     else:
-      log.info(f"main: {report}, 0 events, email not sent")
+      df_vacio = pd.DataFrame()
+      csv_data = df_vacio.to_csv()
+      send_mail(MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS, report, cfg_report, csv_data)
+      debug(f"main: {report}, 0 events")
+      log.info(f"main: {report}, 0 events")
 
 if __name__=="__main__":
   urllib3.disable_warnings()
