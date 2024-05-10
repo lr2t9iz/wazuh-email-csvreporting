@@ -6,7 +6,7 @@
 ## **Prerequisites**
 
 Step 1: **Download**
-Open https://github.com/lr2t9iz/wazuh-email-csvreporting and click on "Code" then click "Download Zip". Once the archive is downloaded, you can extract it in a preferred directory.
+`git clone https://github.com/lr2t9iz/wazuh-email-csvreporting.git`
 
 Step 2: **Install**
 Open a Shell command and navigate to the extraced folder
